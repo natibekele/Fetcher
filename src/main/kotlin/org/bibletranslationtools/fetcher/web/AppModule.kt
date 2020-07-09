@@ -46,6 +46,17 @@ fun Application.appModule() {
                     )
                 )
             }
+            get("/products") {
+                
+                call.respond(
+                    ThymeleafContent(
+                        template = "products",
+                        model = mapOf(
+
+                        )
+                    )
+                )
+            }
         }
     }
 }
