@@ -10,4 +10,6 @@ ext {
     thymeleaf_ver = '3.0.11.RELEASE'
     slf4j_api_ver = '2.0.0-alpha1'
     slf4j_simple_ver = '2.0.0-alpha1'
+    jackson_kotlin_module_ver = '2.11.0'
+    mockito_core_ver = '3.3.3'
 }
