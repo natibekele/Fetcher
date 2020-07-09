@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="static/main.css">
+</head>
+<body>
+    <div class="language_cards">
+        <!--/*@thymesVar id="languageList" type="kotlin.collections.AbstractList"*/-->
+        <div class="card" th:each="language: ${languageList}">
+            <div class="card_top">
+                <div class="localized_name" th:text="${language.localizedName}"></div>
+            </div>
+            <!--/*@thymesVar id="language" type="org.bibletranslationtools.fetcher.data.Language"*/-->
+            <div class="card_bottom">
+                <div class="anglicized_name" th:text="${language.anglicizedName}"></div>
+                <div class="language_code" th:text="${language.code}"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

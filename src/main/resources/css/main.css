@@ -1,0 +1,35 @@
+.language_cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2%;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.card {
+    display: grid;
+    grid-template-rows: 45% 55%;
+    text-align: center;
+    border: 0.5px solid #8080802e;
+    border-radius: 10px;
+    height: 6rem;
+}
+
+.card:hover {
+    border: none;
+    box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.2);
+    transition: 500ms;
+}
+
+.card_top {
+    display: flex;
+    flex-direction: column;
+    background: #a0a0a02e;
+}
+
+.card_bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    /*height: 5rem;*/
+}
