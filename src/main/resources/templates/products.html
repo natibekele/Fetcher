@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>
     </title>
@@ -7,6 +7,7 @@
 </head>
 <body>
 <div class="container">
+
     <div class="intro">
         <div>
             <h3 align="center">
@@ -19,38 +20,27 @@
             </p>
         </div>
     </div>
+
     <div class="content">
-        <div class="content__card">
+        <div class="content__card" th:each="product: ${productList}">
+
             <div class="card__top">
                 <div class="img_container">
-                    <img src="static/recorder_icon.png">
+                    <img th:src="${product.iconUrl}">
                 </div>
             </div>
+
             <div class="card__bottom">
                 <div>
-                    <b>John Doe</b>
+                    <b th:text="#{${product.titleKey}}"></b>
                     <br/>
-                    <span>Architect & Engineer</span>
+                    <span th:text="#{${product.descriptionKey}}"></span>
                 </div>
             </div>
-        </div>
-        <div class="content__card">
-            <div class="card__top">
-                <div class="img_container">
-                    <img src="static/mp3_icon.png">
-                </div>
-            </div>
-            <div class="card__bottom">
-                <div>
-                    <b>
-                        John Doe
-                    </b>
-                    <br/>
-                    <span>Architect & Engineer</span>
-                </div>
-            </div>
+
         </div>
     </div>
+
 </div>
 </body>
 </html>

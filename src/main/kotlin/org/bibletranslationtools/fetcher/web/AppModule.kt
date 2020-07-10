@@ -31,7 +31,9 @@ fun Application.appModule() {
         routing {
             static("static") {
                 resources("css")
-                resources("img")
+                static("img") {
+                    resources("img")
+                }
             }
             get("/languages") {
                 call.respond(
