@@ -15,6 +15,7 @@ import io.ktor.routing.Routing
 import io.ktor.routing.get
 import io.ktor.routing.routing
 import org.bibletranslationtools.fetcher.data.Language
+import org.bibletranslationtools.fetcher.impl.repository.PortGatewayLanguageCatalog
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 
 fun Application.appModule() {
@@ -38,12 +39,7 @@ fun Application.appModule() {
                     ThymeleafContent(
                         template = "languages",
                         model = mapOf(
-                            "languageList" to listOf(
-                                Language("en", "English", "English"),
-                                Language("fr", "French", "France"),
-                                Language("en", "English", "English"),
-                                Language("fr", "French", "France")
-                            )
+                            "languageList" to PortGatewayLanguageCatalog().getAll()
                         )
                     )
                 )
