@@ -29,15 +29,7 @@ class ProductCatalogImpl : ProductCatalog {
             return listOf()
         }
 
-        val productsFromSchema: List<ProductSchema> = jacksonObjectMapper().readValue(jsonFileTypes)
-        return productsFromSchema.map {
-            Product(
-                it.slug,
-                it.titleKey,
-                it.descriptionKey,
-                File(it.iconUrl)
-            )
-        }
+        return jacksonObjectMapper().readValue(jsonFileTypes)
     }
 
     @Throws(FileNotFoundException::class)

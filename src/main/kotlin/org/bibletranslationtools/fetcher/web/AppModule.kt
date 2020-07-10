@@ -15,10 +15,12 @@ import io.ktor.routing.Routing
 import io.ktor.routing.get
 import io.ktor.routing.routing
 import org.bibletranslationtools.fetcher.data.Language
+import org.bibletranslationtools.fetcher.data.Product
 import org.bibletranslationtools.fetcher.impl.repository.DirectoryProviderImpl
 import org.bibletranslationtools.fetcher.impl.repository.LanguageRepositoryImpl
 import org.bibletranslationtools.fetcher.impl.repository.PortGatewayLanguageCatalog
 import org.bibletranslationtools.fetcher.impl.repository.StorageAccessImpl
+import org.bibletranslationtools.fetcher.repository.implementations.ProductCatalogImpl
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
 import javax.sound.sampled.Port
 
@@ -58,11 +60,13 @@ fun Application.appModule() {
                 )
             }
             get("/products") {
+                val products = ProductCatalogImpl().getAll()
+
                 call.respond(
                     ThymeleafContent(
                         template = "products",
                         model = mapOf(
-
+                            "productList" to products
                         )
                     )
                 )
