@@ -9,7 +9,7 @@
 <body>
     <div class="language_cards">
         <!--/*@thymesVar id="languageList" type="kotlin.collections.AbstractList"*/-->
-        <div class="card" th:each="language: ${languageList}">
+        <div class="card" th:each="language: ${languageList}" th:classappend="${language.availability} ? available : not_available">
             <div class="card_top">
                 <div class="localized_name" th:text="${language.localizedName}"></div>
             </div>

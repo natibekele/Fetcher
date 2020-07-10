@@ -15,7 +15,12 @@ import io.ktor.routing.Routing
 import io.ktor.routing.get
 import io.ktor.routing.routing
 import org.bibletranslationtools.fetcher.data.Language
+import org.bibletranslationtools.fetcher.impl.repository.DirectoryProviderImpl
+import org.bibletranslationtools.fetcher.impl.repository.LanguageRepositoryImpl
+import org.bibletranslationtools.fetcher.impl.repository.PortGatewayLanguageCatalog
+import org.bibletranslationtools.fetcher.impl.repository.StorageAccessImpl
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver
+import javax.sound.sampled.Port
 
 fun Application.appModule() {
     install(DefaultHeaders)
@@ -36,16 +41,18 @@ fun Application.appModule() {
                 }
             }
             get("/languages") {
+                val languageCatalog = PortGatewayLanguageCatalog()
+                val storageAccess = StorageAccessImpl(DirectoryProviderImpl())
+                val languageList = LanguageRepositoryImpl(
+                    storageAccess,
+                    languageCatalog
+                ).getLanguages()
+
                 call.respond(
                     ThymeleafContent(
                         template = "languages",
                         model = mapOf(
-                            "languageList" to listOf(
-                                Language("en", "English", "English"),
-                                Language("fr", "French", "France"),
-                                Language("en", "English", "English"),
-                                Language("fr", "French", "France")
-                            )
+                            "languageList" to languageList
                         )
                     )
                 )
