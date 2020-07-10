@@ -7,6 +7,7 @@ import io.ktor.application.call
 import io.ktor.application.install
 import io.ktor.features.CallLogging
 import io.ktor.features.DefaultHeaders
+import io.ktor.http.HttpStatusCode
 import io.ktor.http.content.resources
 import io.ktor.http.content.static
 import io.ktor.response.respond
@@ -30,6 +31,7 @@ fun Application.appModule() {
         routing {
             static("static") {
                 resources("css")
+                resources("img")
             }
             get("/languages") {
                 call.respond(
@@ -47,7 +49,6 @@ fun Application.appModule() {
                 )
             }
             get("/products") {
-                
                 call.respond(
                     ThymeleafContent(
                         template = "products",
