@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Chapters</title>
+</head>
+<body>
+<h1>Chapters</h1>
+<p>
+    <!--/*@thymesVar id="languageCode" type="kotlin.text"*/-->
+    <!--/*@thymesVar id="productSlug" type="kotlin.text"*/-->
+    <a th:href="'/gl/' + ${languageCode} + '/' + ${productSlug}">Books</a>
+</p>
+</body>
+</html>
